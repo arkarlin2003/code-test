@@ -20,7 +20,7 @@ const HeroSection = () => {
         </div>
       </div>
       <h1 className=" font-bold text-[32px] leading-[39.01px] top-[210.13px] left-[185px] -rotate-[12.48deg] absolute z-10">Mid-Season</h1>
-      <h1 className="font-bold text-[300px] leading-[365.7px] absolute text-[#BBBBBA] top-[92px] -left-[137px]">2023</h1>
+      <h1 className="font-bold text-[300px] leading-[365.7px] absolute text-[#BBBBBA] top-[92px] -left-[150px] xl:-left-[137px]">2023</h1>
     </section>
   );
 };

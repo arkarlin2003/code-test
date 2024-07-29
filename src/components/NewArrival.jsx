@@ -3,16 +3,15 @@ import { Navigation } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/effect-coverflow";
-import { useGetProductsQuery } from "@/services/api/productApi";
-import { currencyFormat, randomProducts, wordSlice } from "@/lib/utils";
+import { currencyFormat, wordSlice } from "@/lib/utils";
 import { MdOutlineSearch } from "react-icons/md";
 import { FaRegHeart } from "react-icons/fa6";
 import { IoIosArrowBack } from "react-icons/io";
 import { IoIosArrowForward } from "react-icons/io";
+import useGetProducts from "@/hooks/useGetProducts";
 
 const NewArrival = () => {
-  const { data: products } = useGetProductsQuery();
-
+  const products = useGetProducts()
   return (
     <section className="mt-[75px]  ">
       <h1 className="text-[32px] leading-[39.01px] font-bold text-center">
@@ -30,7 +29,7 @@ const NewArrival = () => {
               clickable: true,
             }}
           >
-            {products && randomProducts(products)?.map((product) => (
+            {products?.map((product) => (
               <SwiperSlide
                 key={product.id}
                 className="w-[270px] h-[374px] relative"

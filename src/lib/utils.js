@@ -23,3 +23,15 @@ export const randomProducts =  (array) => {
       .sort((a, b) => a.sort - b.sort)
       .map((a) => a.value); 
 }; 
+
+const changeDecimal = (price) => {
+  return (Math.round(price * 100) / 100).toFixed(2);
+};
+
+export const cartUpdate = (state) => {
+  state.itemsPrice = changeDecimal(
+    state.cartItems.reduce((pre, cur) => pre + cur.product.price * cur.qty, 0)
+  );
+  state.totalPrice = Number(state.itemsPrice).toFixed(2);
+  return state;
+};

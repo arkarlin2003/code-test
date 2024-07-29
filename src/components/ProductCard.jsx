@@ -9,12 +9,12 @@ const ProductCard = ({ product }) => {
       <div className="product-img">
         <img className="h-full w-full" src={product.image} alt="" />
         <div className="product-detail-search ">
-          <div className="w-[30px] h-[30px] flex items-center justify-center bg-white rounded-full">
+          <Link to={`/products/${titleToSlug(product.title)}`} className="w-[30px] h-[30px] flex cursor-pointer items-center justify-center bg-white rounded-full">
             <MdOutlineSearch className="w-[15px] h-[15px]" />
-          </div>
-          <div className="w-[30px] h-[30px] flex items-center justify-center bg-white rounded-full">
+          </Link>
+          <Link to={`/products/${titleToSlug(product.title)}`}  className="w-[30px] h-[30px] flex cursor-pointer items-center justify-center bg-white rounded-full">
             <FaRegHeart className="w-[15px] h-[15px]" />
-          </div>
+          </Link>
         </div>
       </div>
       <div className="py-2">

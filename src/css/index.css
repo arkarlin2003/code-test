@@ -71,7 +71,7 @@
 
 @layer components {
   .header {
-    @apply w-full h-[76px] py-[25px] px-[150px] flex items-center z-50 relative justify-between;
+    @apply w-full h-[76px] py-[25px] px-[150px] flex items-center z-50  sticky top-0  justify-between 
   }
   .header .cart-count {
     @apply bg-[#e93333] text-white w-[8px] h-[8px] rounded-full flex items-center justify-center  absolute top-0 right-0;
@@ -112,10 +112,13 @@
   }
 
   .square .size-check-label {
-    @apply bg-white border text-center leading-[34px] rounded-none cursor-pointer h-[34px] w-[93px] left-0 absolute top-0;
+    @apply bg-white border text-center leading-[34px] rounded-none cursor-pointer h-[34px]  left-0 absolute top-0;
   }
   .round .color-check-white-label {
     @apply bg-white border rounded-full cursor-pointer h-[34px] w-[34px] left-0 absolute top-0;
+  }
+  .round .color-check-label {
+    @apply  border rounded-full cursor-pointer h-[34px] w-[34px] left-0 absolute top-0;
   }
 
   .round .color-check-black-label {
@@ -157,10 +160,14 @@
   }
 
   .add-to-cart-qty{
-    @apply w-[40px] h-full border flex justify-center items-center
+    @apply w-[40px] h-full border-[0.5px] flex justify-center items-center
   }
 
   .category-hero-section{
     @apply h-[324px] w-full bg-category-hero-img relative z-20 bg-cover bg-no-repeat bg-center flex items-center justify-center
+  }
+
+  .filter-selected{
+    @apply flex gap-[16px] items-center py-[8px] px-[13px] rounded-[50px] border-[0.5px] h-[37px]
   }
 }

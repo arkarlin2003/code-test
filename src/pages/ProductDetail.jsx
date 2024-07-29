@@ -1,5 +1,4 @@
-import {  randomProducts, titleToSlug } from "@/lib/utils";
-import { useGetProductsQuery } from "@/services/api/productApi";
+import {   titleToSlug } from "@/lib/utils";
 import { useEffect, useState } from "react";
 import {  useParams } from "react-router-dom";
 
@@ -7,10 +6,11 @@ import ProductCard from "@/components/ProductCard";
 import CustomerReview from "@/components/CustomerReview";
 import ProductDetailCard from "@/components/ProductDetailCard";
 import ProductDetailAddToCard from "@/components/ProductDetailAddToCard";
+import useGetProducts from "@/hooks/useGetProducts";
 
 const ProductDetail = () => {
   const { slug } = useParams();
-  const { data: products } = useGetProductsQuery();
+  const  products  = useGetProducts();
   const [product, setProduct] = useState({});
   useEffect(() => {
     setProduct(products?.find((pro) => titleToSlug(pro.title) == slug));
@@ -33,7 +33,7 @@ const ProductDetail = () => {
           You might also like
         </h1>
         <div className=" flex flex-wrap gap-[20px] justify-center my-10">
-          {products && randomProducts(products)?.map((product, i) => {
+          {products?.map((product, i) => {
             if (i < 4) {
               return <ProductCard key={product.id} product={product} />;
             }

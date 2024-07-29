@@ -6,10 +6,25 @@ import { IoMdHome } from "react-icons/io";
 import { currencyFormat } from "@/lib/utils";
 import { Link } from "react-router-dom";
 import { FiMinus, FiPlus } from "react-icons/fi";
-
+import { useDispatch } from "react-redux";
+import { addToCart } from "@/services/features/cartSlice";
+import { useState } from "react";
 
 const sizes = ["xxs", "xs", "s", "m", "l", "xl", "xxl", "xxxl"];
 const ProductDetailAddToCard = ({ product }) => {
+  const dispatch = useDispatch();
+  const [qty, setQty] = useState(1);
+
+  const increaseQty = () => {
+    setQty((pre) => pre + 1);
+  };
+
+  const decreaseQty = () => {
+    if (qty > 1) {
+      setQty((pre) => pre - 1);
+    }
+  };
+
   return (
     <div className="w-[400px] h-[812px] space-y-[24px]">
       <div className="space-y-[8px]">
@@ -91,9 +106,12 @@ const ProductDetailAddToCard = ({ product }) => {
                 type="checkbox"
                 className="size-check"
                 name="size[]"
-                id=""
+                id="size-check"
               />
-              <label className="size-check-label uppercase text-sm font-poppin" htmlFor="">
+              <label
+                className="size-check-label w-[93px] uppercase text-sm font-poppin"
+                htmlFor="size-check"
+              >
                 {size}
               </label>
             </div>
@@ -103,19 +121,19 @@ const ProductDetailAddToCard = ({ product }) => {
       <div className="h-[40px] flex justify-between items-center ">
         <h1 className="font-semibold font-poppin">Quantity </h1>
         <div className="flex items-center h-full">
-            <div className="add-to-cart-qty cursor-pointer">
-            <FiMinus className="w-[10px] h-[21px]"/>
-            </div>
-            <div className="add-to-cart-qty">
-                <p className="text-sm font-poppin">1</p>
-            </div>
-            <div className="add-to-cart-qty cursor-pointer">
-            <FiPlus className="w-[10px] h-[21px]"/>
-            </div>
+          <div className="add-to-cart-qty cursor-pointer" onClick={decreaseQty}>
+            <FiMinus className="w-[10px] h-[21px]"  />
+          </div>
+          <div className="add-to-cart-qty">
+            <p className="text-sm font-poppin">{qty}</p>
+          </div>
+          <div className="add-to-cart-qty cursor-pointer"  onClick={increaseQty} >
+            <FiPlus className="w-[10px] h-[21px]" />
+          </div>
         </div>
       </div>
-      <div className="py-[8px] px-[16px] border border-[#E4E4E4]">
-        <p className="text-xs font-poppin">
+      <div className="py-[8px] select-none px-[16px] border border-[#E4E4E4]">
+        <p className="text-xs font-poppin ">
           4-interest free payments of $18.75 with{" "}
           <span className="font-bold">Klama</span>.{" "}
           <Link className="text-default underline" to={"/"}>
@@ -124,13 +142,17 @@ const ProductDetailAddToCard = ({ product }) => {
         </p>
       </div>
       <div className="space-y-[16px]">
-        <Button className=" w-full  rounded-none text-sm font-poppin">
+        <Button
+          onClick={() => dispatch(addToCart({ product, qty }))}
+          className=" w-full  rounded-none text-sm font-poppin"
+        >
           Add to Cart
         </Button>
         <Button className="bg-white  w-full hover:text-white text-black border space-x-[10px] rounded-none text-sm font-poppin">
           <FaRegHeart className="w-[20px] h-[20px]" />
           <p>Favourite</p>
         </Button>
+        product
       </div>
       <div className="flex gap-[16px]">
         <div className="w-[192px] h-[106px] bg-[#F3EDFF] py-[20px] px-[17px]">

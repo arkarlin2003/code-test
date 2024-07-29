@@ -1,5 +1,6 @@
-import { useGetCategoriesQuery } from "@/services/api/productApi";
+import useGetCategories from "@/hooks/useGetCategories";
 import { MdOutlineSearch } from "react-icons/md";
+import { Link } from "react-router-dom";
 
 const CategoryCard = ({ category }) => {
   return (
@@ -13,16 +14,16 @@ const CategoryCard = ({ category }) => {
         {category}
       </h3>
       <div className="category-card-search">
-        <button className="w-[134px] bg-white flex items-center  space-x-1 h-[40px] rounded-[5px] py-[8px] px-[16px]">
+        <Link to={'/categories?search='+category} className="w-[134px] bg-white flex items-center  space-x-1 h-[40px] rounded-[5px] py-[8px] px-[16px]">
           <MdOutlineSearch className="w-[24px] h-[24px]" />
           <h4 className="text-sm font-poppin">Shop Now</h4>
-        </button>
+        </Link>
       </div>
     </div>
   );
 };
 const Category = () => {
-  const { data: categories } = useGetCategoriesQuery();
+  const categories = useGetCategories();
 
   return (
     <section className="px-[150px] pt-14 pb-5 flex gap-7 w-full">

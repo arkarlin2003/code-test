@@ -8,7 +8,7 @@ const App = () => {
   return (
     <>
       {pathname == "/" && <SubHeader />}
-      <Header />
+      {pathname == "/" ? <Header/> : <Header className="bg-white" />}
       <Outlet />
       <Footer />
     </>

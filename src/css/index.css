@@ -1,0 +1,166 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 222.2 84% 4.9%;
+    --card: 0 0% 100%;
+    --card-foreground: 222.2 84% 4.9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 222.2 84% 4.9%;
+    --primary: 222.2 47.4% 11.2%;
+    --primary-foreground: 210 40% 98%;
+    --secondary: 210 40% 96.1%;
+    --secondary-foreground: 222.2 47.4% 11.2%;
+    --muted: 210 40% 96.1%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+    --accent: 210 40% 96.1%;
+    --accent-foreground: 222.2 47.4% 11.2%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 222.2 84% 4.9%;
+    --radius: 0.5rem;
+    --chart-1: 12 76% 61%;
+    --chart-2: 173 58% 39%;
+    --chart-3: 197 37% 24%;
+    --chart-4: 43 74% 66%;
+    --chart-5: 27 87% 67%;
+  }
+
+  .dark {
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
+    --card: 222.2 84% 4.9%;
+    --card-foreground: 210 40% 98%;
+    --popover: 222.2 84% 4.9%;
+    --popover-foreground: 210 40% 98%;
+    --primary: 210 40% 98%;
+    --primary-foreground: 222.2 47.4% 11.2%;
+    --secondary: 217.2 32.6% 17.5%;
+    --secondary-foreground: 210 40% 98%;
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+    --accent: 217.2 32.6% 17.5%;
+    --accent-foreground: 210 40% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 212.7 26.8% 83.9%;
+    --chart-1: 220 70% 50%;
+    --chart-2: 160 60% 45%;
+    --chart-3: 30 80% 55%;
+    --chart-4: 280 65% 60%;
+    --chart-5: 340 75% 55%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+@layer components {
+  .header {
+    @apply w-full h-[76px] py-[25px] px-[150px] flex items-center z-50 relative justify-between;
+  }
+  .header .cart-count {
+    @apply bg-[#e93333] text-white w-[8px] h-[8px] rounded-full flex items-center justify-center  absolute top-0 right-0;
+  }
+  .hero-section {
+    @apply flex items-center px-[240px] pb-[20px]  bg-hero-img h-[805px] bg-cover bg-center bg-no-repeat w-full relative z-10 -top-[76px];
+  }
+  .collection-section {
+    @apply bg-collection-img overflow-hidden h-[505px] after:content-[''] after:top-0 after:bg-collection-removal-img after:w-[505px] after:h-[505px] after:bg-contain after:absolute after:right-28 before:content-[''] before:z-10 before:bg-clothes-png before:w-[500px] before:h-[666px] before:absolute before:bg-cover before:top-[150px] before:left-[-112px] relative mt-14 bg-cover bg-center bg-no-repeat w-full;
+  }
+
+  .product-img {
+    @apply w-full h-[302px] relative p-7 rounded-lg overflow-hidden flex justify-center  before:absolute before:z-30 before:w-full before:h-[302px] before:top-0 before:content-[''] before:hover:bg-[#00000066]  before:hover:transition-all before:hover:duration-300;
+  }
+
+  .product-detail-search {
+    @apply hidden absolute justify-center z-50 top-1/2 items-center space-x-3;
+  }
+  .product-img:hover .product-detail-search {
+    @apply flex transition-all  duration-500;
+  }
+
+  .category-card {
+    @apply w-[360px] relative h-[495px] rounded-[5px] overflow-hidden before:absolute before:z-30 before:w-full before:h-full before:top-0 before:content-[''] before:hover:bg-[#00000066]  before:hover:transition-all before:hover:duration-300;
+  }
+  .category-card-search {
+    @apply absolute z-40 top-[55%] hidden w-full  justify-center;
+  }
+  .category-card:hover .category-card-search {
+    @apply flex transition-all  duration-500;
+  }
+
+  .round {
+    @apply relative mr-[24px];
+  }
+  .square {
+    @apply relative mr-[24px];
+  }
+
+  .square .size-check-label {
+    @apply bg-white border text-center leading-[34px] rounded-none cursor-pointer h-[34px] w-[93px] left-0 absolute top-0;
+  }
+  .round .color-check-white-label {
+    @apply bg-white border rounded-full cursor-pointer h-[34px] w-[34px] left-0 absolute top-0;
+  }
+
+  .round .color-check-black-label {
+    @apply bg-black border rounded-full cursor-pointer h-[34px] w-[34px] left-0 absolute top-0;
+  }
+
+  .round .color-check-gray-label {
+    @apply bg-[#E4E4E4] border rounded-full cursor-pointer h-[34px] w-[34px] left-0 absolute top-0;
+  }
+
+  .round .color-check-white,
+  .round .color-check-black,
+  .round .color-check-gray {
+    @apply hidden;
+  }
+
+  .square .size-check{
+    @apply hidden
+  }
+
+  .square .size-check-label::after{
+    @apply opacity-100;
+  }
+
+  .square .size-check-label:checked {
+    @apply border border-white ring ring-default;
+  }
+
+  .round .color-check-white:checked + label:after,
+  .round .color-check-black:checked + label:after,
+  .round .color-check-gray:checked + label:after {
+    @apply opacity-100;
+  }
+
+  .round .color-check-white:checked + label,
+  .round .color-check-black:checked + label,
+  .round .color-check-gray:checked + label {
+    @apply border border-white ring ring-default;
+  }
+
+  .add-to-cart-qty{
+    @apply w-[40px] h-full border flex justify-center items-center
+  }
+
+  .category-hero-section{
+    @apply h-[324px] w-full bg-category-hero-img relative z-20 bg-cover bg-no-repeat bg-center flex items-center justify-center
+  }
+}

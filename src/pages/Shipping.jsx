@@ -8,7 +8,7 @@ import { Link } from "react-router-dom";
 const Shipping = () => {
   const carts = useSelector((state) => state.carts);
   return (
-    <section className="px-[150px] my-[50px] flex justify-between gap-24">
+    <section className="px-[150px] my-[60px] flex justify-between gap-24">
       <div className="w-[557px] space-y-[32px]">
         <ShippingStep/>
       </div>

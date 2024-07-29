@@ -17,7 +17,7 @@ const ProductDetail = () => {
     
   }, [product, products]);
   return (
-    <section className="px-[150px]  mt-[59px]">
+    <section className="px-[150px]  mt-[60px]">
       <div className="flex gap-[76px]">
         <div className="w-[635px] h-[899.5px] flex  flex-col gap-[32px]">
           <div className="h-[526px] w-full">

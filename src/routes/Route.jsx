@@ -3,6 +3,7 @@ import AddToCartDetail from '@/pages/AddToCartDetail'
 import Category from '@/pages/Category'
 import Home from '@/pages/Home'
 import ProductDetail from '@/pages/ProductDetail'
+import PurchaseComplete from '@/pages/PurchaseComplete'
 import Shipping from '@/pages/Shipping'
 import { createBrowserRouter, createRoutesFromElements, Route } from 'react-router-dom'
 
@@ -15,6 +16,7 @@ const Router = createBrowserRouter(
         <Route path='/categories' element={<Category/>}/>
         <Route path='/add-to-carts' element={<AddToCartDetail/>}/>
         <Route path='/shipping' element={<Shipping/>}/>
+        <Route path='/purchase-complete' element={<PurchaseComplete/>}/>
       </Route>
     </Route>
   )

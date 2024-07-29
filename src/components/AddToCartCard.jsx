@@ -21,8 +21,8 @@ const AddToCartCard = ({ product, qty }) => {
     }
   };
   return (
-    <div className="h-[220px] w-full flex gap-[32px]">
-      <div className="w-[200px] h-full">
+    <div className="h-[250px] w-full flex gap-[32px]">
+      <div className="w-[222px] h-full">
         <img
           className="h-full w-full"
           src={product.image}

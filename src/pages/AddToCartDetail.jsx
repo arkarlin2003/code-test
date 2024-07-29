@@ -7,7 +7,7 @@ import { Link } from "react-router-dom";
 const AddToCartDetail = () => {
   const carts = useSelector((state) => state.carts);
   return (
-    <section className="px-[150px] my-[50px] gap-12 flex justify-between">
+    <section className="px-[150px] my-[50px] gap-24 flex justify-between">
       <div className="w-[555px] space-y-[32px]">
         <div className="bg-[#F5F5F5] border-[#E4E4E4] flex justify-center  w-full h-[40px] border py-[8px] space-x-2">
           <div className="w-[15px] h-[15px] bg-[#F26060]"></div>

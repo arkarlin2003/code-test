@@ -8,7 +8,7 @@ import { Link } from "react-router-dom";
 const Shipping = () => {
   const carts = useSelector((state) => state.carts);
   return (
-    <section className="px-[150px] my-[50px] flex justify-between gap-12">
+    <section className="px-[150px] my-[50px] flex justify-between gap-24">
       <div className="w-[557px] space-y-[32px]">
         <ShippingStep/>
       </div>
@@ -16,7 +16,7 @@ const Shipping = () => {
         <div>
           <h1 className="font-bold text-lg">
             Shipping Bag{" "}
-            <span className="text-sm font-normal font-poppin">(2 item)</span>
+            <span className="text-sm font-normal font-poppin">({carts?.cartItems.length} item)</span>
           </h1>
         </div>
         <hr />

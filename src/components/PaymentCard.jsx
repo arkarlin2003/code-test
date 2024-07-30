@@ -21,11 +21,21 @@ import { useState } from "react";
 import { useFormik } from "formik";
 import { Link, useNavigate } from "react-router-dom";
 import { clearCart, setPaymentMethod } from "@/services/features/cartSlice";
-import { Label } from "./ui/label";
-
+import * as Yup from "yup";
+import ErrorMessage from "./ErrorMessage";
 const months = ["January", "February", "March"];
 const years = ["2024", "2023", "2022", "2021", "2020"];
 
+const PaymentSchema = Yup.object().shape({
+  paymentMethod: Yup.object().shape({
+    type: Yup.string().required("method required"),
+    cardNumber: Yup.number().required("card number required"),
+    nameOnCard: Yup.string().required("name on card required"),
+    year: Yup.string().required("year required"),
+    month: Yup.string().required("month required"),
+    ccv: Yup.number().required("ccv required"),
+  }),
+});
 const PaymentCard = () => {
   const dispatch = useDispatch();
   const [method, setMethod] = useState("credit-card");
@@ -36,17 +46,16 @@ const PaymentCard = () => {
         type: method,
         cardNumber: "",
         nameOnCard: "",
-        year: "",
-        month: "",
+        year: "2024",
+        month: "January",
         ccv: "",
       },
     },
+    validationSchema: PaymentSchema,
     onSubmit: async (values) => {
       dispatch(setPaymentMethod(values));
-      if (values.paymentMethod.type) {
-        dispatch(clearCart());
-        nav("/purchase-complete");
-      }
+      dispatch(clearCart());
+      nav("/purchase-complete");
     },
   });
   return (
@@ -99,9 +108,12 @@ const PaymentCard = () => {
                           onChange={formik.handleChange}
                           value={formik.values.paymentMethod.cardNumber}
                           name="paymentMethod.cardNumber"
-                          type="text"
+                          type="number"
                           className="py-[10px] px-[21px] focus:outline-none border h-[41px] w-full font-poppin text-sm text-[#AAA7A7] placeholder:text-[#AAA7A7]"
                           placeholder="Card Number"
+                        />
+                        <ErrorMessage
+                          message={formik.errors.paymentMethod?.cardNumber}
                         />
                       </div>
                       <div>
@@ -113,9 +125,17 @@ const PaymentCard = () => {
                           className="py-[10px] px-[21px] focus:outline-none border h-[41px] w-full font-poppin text-sm text-[#AAA7A7] placeholder:text-[#AAA7A7]"
                           placeholder="Name on card"
                         />
+                        <ErrorMessage
+                          message={formik.errors.paymentMethod?.nameOnCard}
+                        />
                       </div>
                       <div className="flex justify-between h-[41px]">
-                        <Select>
+                        <Select
+                          defaultValue={formik.values.paymentMethod.month}
+                          onValueChange={(value) =>
+                            (formik.values.paymentMethod.month = value)
+                          }
+                        >
                           <SelectTrigger className="w-[131px] text-sm h-full py-[10px] px-[21px]">
                             <SelectValue
                               className="text-sm placeholder:text-sm"
@@ -136,7 +156,12 @@ const PaymentCard = () => {
                             </SelectGroup>
                           </SelectContent>
                         </Select>
-                        <Select>
+                        <Select
+                          defaultValue={formik.values.paymentMethod.year}
+                          onValueChange={(value) =>
+                            (formik.values.paymentMethod.year = value)
+                          }
+                        >
                           <SelectTrigger className="w-[131px] text-sm h-full py-[10px] px-[21px]">
                             <SelectValue
                               className="text-sm placeholder:text-sm"
@@ -165,11 +190,14 @@ const PaymentCard = () => {
                             onChange={formik.handleChange}
                             value={formik.values.paymentMethod.ccv}
                             name="paymentMethod.ccv"
-                            type="text"
+                            type="number"
                             className="py-[10px] px-[21px] pr-[30px] focus:outline-none border h-[41px] w-[131px] font-poppin text-sm  "
                             placeholder="CCV"
                           />
                           <AiOutlineQuestionCircle className="w-[20px] h-[20px] absolute top-[10px] right-2" />
+                          <ErrorMessage
+                            message={formik.errors.paymentMethod?.ccv}
+                          />
                         </div>
                       </div>
                     </div>
@@ -207,9 +235,12 @@ const PaymentCard = () => {
                           onChange={formik.handleChange}
                           value={formik.values.paymentMethod.cardNumber}
                           name="paymentMethod.cardNumber"
-                          type="text"
+                          type="number"
                           className="py-[10px] px-[21px] focus:outline-none border h-[41px] w-full font-poppin text-sm text-[#AAA7A7] placeholder:text-[#AAA7A7]"
                           placeholder="Card Number"
+                        />
+                        <ErrorMessage
+                          message={formik.errors.paymentMethod?.cardNumber}
                         />
                       </div>
                       <div>
@@ -221,9 +252,17 @@ const PaymentCard = () => {
                           className="py-[10px] px-[21px] focus:outline-none border h-[41px] w-full font-poppin text-sm text-[#AAA7A7] placeholder:text-[#AAA7A7]"
                           placeholder="Name on card"
                         />
+                        <ErrorMessage
+                          message={formik.errors.paymentMethod?.nameOnCard}
+                        />
                       </div>
                       <div className="flex justify-between h-[41px]">
-                        <Select>
+                        <Select
+                          defaultValue={formik.values.paymentMethod.month}
+                          onValueChange={(value) =>
+                            (formik.values.paymentMethod.month = value)
+                          }
+                        >
                           <SelectTrigger className="w-[131px] text-sm h-full py-[10px] px-[21px]">
                             <SelectValue
                               className="text-sm placeholder:text-sm"
@@ -235,9 +274,6 @@ const PaymentCard = () => {
                               {months?.map((month) => (
                                 <SelectItem
                                   key={month}
-                                  onChange={() =>
-                                    (formik.values.paymentMethod.month = month)
-                                  }
                                   value={month}
                                   name="paymentMethod.month"
                                 >
@@ -247,7 +283,12 @@ const PaymentCard = () => {
                             </SelectGroup>
                           </SelectContent>
                         </Select>
-                        <Select>
+                        <Select
+                          defaultValue={formik.values.paymentMethod.year}
+                          onValueChange={(value) =>
+                            (formik.values.paymentMethod.year = value)
+                          }
+                        >
                           <SelectTrigger className="w-[131px] text-sm h-full py-[10px] px-[21px]">
                             <SelectValue
                               className="text-sm placeholder:text-sm"
@@ -276,11 +317,14 @@ const PaymentCard = () => {
                             onChange={formik.handleChange}
                             value={formik.values.paymentMethod.ccv}
                             name="paymentMethod.ccv"
-                            type="text"
+                            type="number"
                             className="py-[10px] px-[21px] pr-[30px] focus:outline-none border h-[41px] w-[131px] font-poppin text-sm  "
                             placeholder="CCV"
                           />
                           <AiOutlineQuestionCircle className="w-[20px] h-[20px] absolute top-[10px] right-2" />
+                          <ErrorMessage
+                            message={formik.errors.paymentMethod?.ccv}
+                          />
                         </div>
                       </div>
                     </div>

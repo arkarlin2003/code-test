@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 
 const ProductCard = ({ product }) => {
   return (
-    <div className="w-[240px] h-[374px] relative">
+    <div className="product-card">
       <div className="product-img">
         <img className="h-full w-full" src={product.image} alt="" />
         <div className="product-detail-search ">
@@ -17,7 +17,7 @@ const ProductCard = ({ product }) => {
           </Link>
         </div>
       </div>
-      <div className="py-2">
+      <div>
         <h1 className="font-poppin font-semibold text-center">
           <Link to={'/products/'+titleToSlug(product.title)}>{wordSlice(product.title)}</Link>
         </h1>

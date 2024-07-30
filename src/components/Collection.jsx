@@ -4,7 +4,7 @@ import { Button } from "./ui/button";
 const Collection = () => {
   return (
     <section className="collection-section">
-      <div className="text-[54px] px-[150px] z-50 relative pt-[119px] space-y-5 leading-[65.83px] font-bold">
+      <div className="title">
         <h1>
           New <span className=" text-default">2023</span>
         </h1>

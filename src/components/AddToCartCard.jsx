@@ -37,7 +37,7 @@ const AddToCartCard = ({ product, qty }) => {
           </h2>
         </div>
         <div className="space-y-[16px]">
-          <h4 className="text-sm font-poppin">Black / XL</h4>
+          <h4 className="text-sm font-poppin">{product.category}</h4>
           <div className="h-[40px] flex justify-between">
             <div className="flex items-center h-full">
               <div

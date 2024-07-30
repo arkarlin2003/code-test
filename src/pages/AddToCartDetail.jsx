@@ -7,9 +7,9 @@ import { Link } from "react-router-dom";
 const AddToCartDetail = () => {
   const carts = useSelector((state) => state.carts);
   return (
-    <section className="px-[150px] my-[60px] gap-24 flex justify-between">
-      <div className="w-[555px] space-y-[32px]">
-        <div className="bg-[#F5F5F5] border-[#E4E4E4] flex justify-center  w-full h-[40px] border py-[8px] space-x-2">
+    <section className="addtocard-detail-section">
+      <div className="list">
+        <div className="bg-[#F5F5F5] border-[#E4E4E4] items-center flex justify-center  w-full h-[40px] border py-[8px] space-x-2">
           <div className="w-[15px] h-[15px] bg-[#F26060]"></div>
           <h1 className=" font-semibold font-poppin">
             You’re 35.00 Away from free Shipping
@@ -25,7 +25,7 @@ const AddToCartDetail = () => {
           ))}
         </ul>
       </div>
-      <div className="w-[512px] bg-[#F4F4F4] h-[373px] p-[32px] space-y-[24px]">
+      <div className="apply-section">
         <div className="space-y-[16px]">
           <h1 className=" font-semibold font-poppin">
             Gift card or discount code

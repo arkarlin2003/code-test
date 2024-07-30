@@ -1,6 +1,14 @@
 import { IoIosStar } from "react-icons/io";
 import ReviewCard from "./ReviewCard";
 import { Button } from "./ui/button";
+import {
+  Select,
+  SelectContent,
+  SelectGroup,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "./ui/select";
 
 const RatingRange = () => {
   return (
@@ -26,21 +34,33 @@ const RatingRange = () => {
   );
 };
 
-const CustomerReview = ({rating}) => {
+const CustomerReview = ({ rating }) => {
   return (
-    <div className="my-[86px]">
+    <div className="customer-review-section">
       <div className="flex justify-between">
-        <h1 className="text-[32px] leading-[39.01px] font-bold">
-          Customer Reviews
-        </h1>
-        <div className="flex gap-[16px] items-center text-sm font-poppin">
-          <h4>Sort by</h4>
-          <h4>Newest</h4>
+        <h1 className="customer-review-title">Customer Reviews</h1>
+        <div className="flex  items-center">
+          <h4 className="text-sm font-poppin">Sort by:</h4>
+          <div>
+            <Select>
+              <SelectTrigger className="border-0 focus:border-0 focus:ring-offset-0 focus:ring-0">
+                <SelectValue
+                  className="text-sm placeholder:text-sm font-poppin"
+                  placeholder="Newest"
+                />
+              </SelectTrigger>
+              <SelectContent>
+                <SelectGroup>
+                  <SelectItem value="newest">Newest</SelectItem>
+                </SelectGroup>
+              </SelectContent>
+            </Select>
+          </div>
         </div>
       </div>
-      <div className="my-12 flex justify-between space-x-10">
+      <div className="my-[50px] flex justify-between gap-[50px]">
         <div className="w-[541px]">
-          <ul className="space-y-[16px] w-full">
+          <ul className="space-y-[24px] w-full">
             <li>
               <ReviewCard />
             </li>
@@ -58,7 +78,9 @@ const CustomerReview = ({rating}) => {
             </li>
           </ul>
           <div className="w-full mt-12">
-            <Button className="text-sm font-poppin text-default hover:text-white bg-[#F3EDFF] rounded-none w-full">Load more...</Button>
+            <Button className="text-sm font-poppin text-default hover:text-white bg-[#F3EDFF] rounded-none w-full">
+              Load more...
+            </Button>
           </div>
         </div>
 
@@ -68,7 +90,9 @@ const CustomerReview = ({rating}) => {
             <div className="flex  items-center gap-[29px]">
               <div className="flex items-center space-x-2">
                 <IoIosStar className="w-[30px] h-[27.73px]  text-yellow-500" />
-                <h1 className="text-[54px] leading-[65.83px] font-bold">{rating}</h1>
+                <h1 className="text-[54px] leading-[65.83px] font-bold">
+                  {rating}
+                </h1>
               </div>
               <div>
                 <p className="font-poppin font-semibold">30 out of 32 (98%)</p>

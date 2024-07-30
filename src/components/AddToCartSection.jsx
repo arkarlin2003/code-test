@@ -1,7 +1,7 @@
 import { useSelector } from "react-redux";
 import AddToCartCard from "./AddToCartCard";
 import { Button } from "./ui/button";
-import { SheetContent, SheetHeader, SheetTitle } from "./ui/sheet";
+import { SheetClose, SheetContent, SheetHeader, SheetTitle } from "./ui/sheet";
 import { currencyFormat } from "@/lib/utils";
 import { Link } from "react-router-dom";
 
@@ -17,14 +17,14 @@ const AddToCartSection = () => {
           </span>
         </SheetTitle>
       </SheetHeader>
-      <ul className="py-[50px] space-y-[24px] overflow-y-auto ">
+      <ul className=" space-y-[32px] my-[50px] overflow-y-auto ">
         {carts?.cartItems?.map((cart) => (
           <li key={cart.product.id}>
             <AddToCartCard product={cart.product} qty={cart.qty} />
           </li>
         ))}
       </ul>
-      <div className="space-y-[24px]">
+      <div className="space-y-[16px] mt-9">
         <div>
           <Button className="h-[58px] rounded-none bg-white border hover:bg-white  border-default text-[#6f6f6f] text-sm font-poppin w-full text-center">
             4-Interest-free payments of $18.75 with{" "}
@@ -33,11 +33,13 @@ const AddToCartSection = () => {
           </Button>
         </div>
         <div>
-          <Link to={"/add-to-carts"}>
-            <Button className="h-[58px] rounded-none font-poppin font-semibold w-full">
-              Check Out - {currencyFormat(carts?.totalPrice)}
-            </Button>
-          </Link>
+          <SheetClose asChild>
+            <Link to={"/add-to-carts"}>
+              <Button className="h-[58px] rounded-none font-poppin font-semibold w-full">
+                Check Out - {currencyFormat(carts?.totalPrice)}
+              </Button>
+            </Link>
+          </SheetClose>
         </div>
       </div>
     </SheetContent>

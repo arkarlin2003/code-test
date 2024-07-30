@@ -17,9 +17,9 @@ const ProductDetail = () => {
     
   }, [product, products]);
   return (
-    <section className="px-[150px]  mt-[60px]">
+    <section className="product-detail-section">
       <div className="flex gap-[76px]">
-        <div className="w-[635px] h-[899.5px] flex  flex-col gap-[32px]">
+        <div className="deatil">
           <div className="h-[526px] w-full">
             <img src={product?.image} className="w-full h-full object-contain" alt="" />
           </div>
@@ -32,7 +32,7 @@ const ProductDetail = () => {
         <h1 className="text-2xl font-bold text-center  mb-10">
           You might also like
         </h1>
-        <div className=" flex flex-wrap gap-[20px] justify-center my-10">
+        <div className="grid grid-cols-4 gap-[24px] justify-center my-10">
           {products?.map((product, i) => {
             if (i < 4) {
               return <ProductCard key={product.id} product={product} />;

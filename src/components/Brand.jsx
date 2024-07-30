@@ -11,15 +11,15 @@ const brandImgs = [
 
 const Brand = () => {
   return (
-    <section className="px-[150px]">
-      <h1 className="text-[32px] leading-[39.01px] font-bold text-center">
+    <section className="brand-section">
+      <h1 className="title">
         Brand
       </h1>
-      <div className=" grid grid-cols-4 py-[50px]">
+      <div className=" grid grid-cols-4 py-[40px]">
         {brandImgs.map((brand, i) => (
           <div className="w-[285px] h-[340px] relative" key={i}>
-            <img src={brand} className="w-full h-full" alt="" />
-            <h1 className="text-sm font-semibold w-full font-poppin text-center absolute top-[45%]">Brand</h1>
+            <img src={brand} className="w-full h-full " alt="" />
+            <h1 className="sub-title">Brand</h1>
           </div>
         ))}
       </div>

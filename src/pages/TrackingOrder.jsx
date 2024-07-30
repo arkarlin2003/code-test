@@ -4,7 +4,7 @@ import { FiCheck } from "react-icons/fi";
 
 const TrackingOrder = () => {
   return (
-    <section className="px-[150px] my-[60px] pb-[40px] flex justify-center gap-24">
+    <section className="tracking-order-section">
       <div className="w-[415px]">
         <div>
           <h1 className="text-[32px] leading-[39.01px] font-bold text-center">

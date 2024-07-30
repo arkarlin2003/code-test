@@ -1,4 +1,4 @@
-import { Outlet, parsePath, useLocation } from "react-router-dom";
+import { Outlet, useLocation } from "react-router-dom";
 import Header from "./components/shared/Header";
 import Footer from "./components/shared/Footer";
 import SubHeader from "./components/shared/SubHeader";
@@ -8,7 +8,7 @@ const App = () => {
   return (
     <>
       {pathname == "/" && <SubHeader />}
-      {pathname == "/" ? <Header/> : <Header className="bg-white" />}
+      {pathname == "/" ? <Header/> : <Header className="bg-white border-b" />}
       <Outlet />
       <Footer />
     </>

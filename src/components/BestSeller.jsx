@@ -5,16 +5,16 @@ const BestSeller = () => {
   const  products  = useGetProducts();
 
   return (
-    <section className="px-[150px] my-[56px] border-y-[1px] pt-[35px]">
+    <section className="best-seller-section">
       <div className="space-y-[24px] ">
-        <h5 className=" uppercase text-xs font-semibold font-poppin text-default text-center">
+        <h5 className="sub-title">
           Top selling
         </h5>
-        <h2 className="text-[32px] leading-[39.01px] font-bold text-center">
+        <h2 className="title">
           Best Weekend Sellers
         </h2>
       </div>
-      <div className=" flex flex-wrap gap-[20px] justify-center my-10">
+      <div className=" grid grid-cols-4 gap-[24px]">
         {products?.map((product) => (
           <ProductCard key={product.id} product={product}/>
         ))}

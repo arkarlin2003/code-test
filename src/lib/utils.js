@@ -1,8 +1,13 @@
 import { clsx } from "clsx"
+import { Bounce, toast } from "react-toastify"
 import { twMerge } from "tailwind-merge"
 
 export function cn(...inputs) {
   return twMerge(clsx(inputs))
+}
+
+export const toastSuccess = (message) => {
+  toast.success(message);
 }
 
 export const wordSlice = (word) => {

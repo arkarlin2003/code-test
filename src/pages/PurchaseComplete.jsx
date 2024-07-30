@@ -1,8 +1,9 @@
 import { Button } from "@/components/ui/button";
+import { Link } from "react-router-dom";
 
 const PurchaseComplete = () => {
   return (
-    <section className="px-[150px] my-[60px] flex justify-between gap-24">
+    <section className="purchase-complete-section">
       <div className="space-y-[32px] flex flex-col items-center w-full">
         <div>
           <img
@@ -23,12 +24,16 @@ const PurchaseComplete = () => {
           </p>
         </div>
         <div className="h-[53px] w-[740px] flex justify-between">
+          <Link to="/categories">
             <Button className="h-full bg-white text-black border-[#E4E4E4] border hover:bg-white rounded-none py-[16px] px-[21px] text-sm font-poppin">
-                Go back shopping
+              Go back shopping
             </Button>
+          </Link>
+          <Link to="/tracking-order">
             <Button className="h-full rounded-none py-[16px] px-[21px] text-sm font-poppin">
-                Go back shopping
+              Go to Tracking Order
             </Button>
+          </Link>
         </div>
       </div>
     </section>

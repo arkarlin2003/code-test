@@ -9,7 +9,7 @@ import { IoLocationSharp } from "react-icons/io5";
 
 const AboutUs = () => {
   return (
-    <section className="px-[150px] my-[60px] pb-[40px] flex justify-between gap-16">
+    <section className="aboutus-section">
       <div className="w-[446px] space-y-[26px]">
         <div className="space-y-[16px]">
           <h1 className="text-[32px] leading-[39.01px] font-bold">

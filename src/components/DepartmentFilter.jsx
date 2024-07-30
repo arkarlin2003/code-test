@@ -15,8 +15,8 @@ const departments = [
 const DepartmentFilter = () => {
   return (
     <div className="space-y-[24px]">
-      <Accordion type="single" collapsible className="w-full">
-        <AccordionItem value="item-1">
+      <Accordion type="single" collapsible  defaultValue="department" className="w-full">
+        <AccordionItem value="department">
           <AccordionTrigger className="font-semibold font-poppin">
             Department
           </AccordionTrigger>

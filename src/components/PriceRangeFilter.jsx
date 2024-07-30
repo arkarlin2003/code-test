@@ -10,8 +10,8 @@ import { FiMinus } from "react-icons/fi";
 const PriceRangeFilter = () => {
   return (
     <div className="space-y-[24px] ">
-      <Accordion type="single" collapsible className="w-full">
-        <AccordionItem value="item-1">
+      <Accordion type="single" collapsible defaultValue="price" className="w-full">
+        <AccordionItem value="price">
           <AccordionTrigger className="font-semibold font-poppin">
             Price
           </AccordionTrigger>

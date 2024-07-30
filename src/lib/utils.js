@@ -14,9 +14,6 @@ export const wordSlice = (word) => {
   return word.slice(0,20)+"..."
 }
 
-export const titleToSlug = (title) => {
-  return title.toLowerCase().replaceAll(' ','-')
-}
 export const currencyFormat = (price) => {
  return new Intl.NumberFormat('en-US',{
     style:'currency',currency:'USD'

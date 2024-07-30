@@ -1,21 +1,15 @@
-import {   titleToSlug } from "@/lib/utils";
-import { useEffect, useState } from "react";
 import {  useParams } from "react-router-dom";
-
 import ProductCard from "@/components/ProductCard";
 import CustomerReview from "@/components/CustomerReview";
 import ProductDetailCard from "@/components/ProductDetailCard";
 import ProductDetailAddToCard from "@/components/ProductDetailAddToCard";
 import useGetProducts from "@/hooks/useGetProducts";
+import { useGetProductQuery } from "@/services/api/productApi";
 
 const ProductDetail = () => {
-  const { slug } = useParams();
-  const  products  = useGetProducts();
-  const [product, setProduct] = useState({});
-  useEffect(() => {
-    setProduct(products?.find((pro) => titleToSlug(pro.title) == slug));
-    
-  }, [product, products]);
+  const { id } = useParams();
+  const products = useGetProducts()
+  const {data:product} = useGetProductQuery(id)
   return (
     <section className="product-detail-section">
       <div className="flex gap-[76px]">

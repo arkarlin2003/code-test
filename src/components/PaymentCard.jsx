@@ -55,7 +55,7 @@ const PaymentCard = () => {
         <div className="mt-[24px] space-y-[32px]">
           <RadioGroup defaultValue={method}>
             <div>
-              <Accordion type="single" collapsible className="w-full">
+              <Accordion type="single" collapsible defaultValue="credit-card" className="w-full">
                 <AccordionItem value="credit-card" className="border-b-0">
                   <AccordionTrigger hide={true}>
                     <div className="flex justify-between py-[16px] px-[24px] border w-full">

@@ -9,8 +9,8 @@ const sizes = ["xxs", "xs", "s", "m", "l", "xl", "xxl", "xxxl"];
 const SizeFilter = () => {
   return (
     <div className="space-y-[24px]">
-      <Accordion type="single" collapsible className="w-full">
-        <AccordionItem value="item-1">
+      <Accordion type="single" collapsible defaultValue="size" className="w-full">
+        <AccordionItem value="size">
           <AccordionTrigger className="font-semibold font-poppin">
             Size
           </AccordionTrigger>

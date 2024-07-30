@@ -36,6 +36,7 @@ const MenuLists = () => {
 };
 
 const Header = ({className}) => {
+  
   const { cartItems } = useSelector((state) => state.carts);
   return (
     <header className={`header ${className}`}>

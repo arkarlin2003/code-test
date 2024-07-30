@@ -64,8 +64,8 @@ const InformationCard = () => {
           <h1 className="font-semibold font-poppin">Shipping address</h1>
           <div className="mt-[24px] space-y-[32px]">
             <div>
-              <Accordion type="single" collapsible className="w-full">
-                <AccordionItem value="item-1">
+              <Accordion type="single" collapsible defaultValue="indonesia" className="w-full">
+                <AccordionItem value="indonesia">
                   <AccordionTrigger className=" text-sm font-poppin">
                     Indonesia
                   </AccordionTrigger>
@@ -116,7 +116,7 @@ const InformationCard = () => {
                 </AccordionItem>
               </Accordion>
               <Accordion type="single" collapsible className="w-full">
-                <AccordionItem value="item-1">
+                <AccordionItem value="province">
                   <AccordionTrigger className=" text-sm font-poppin">
                     Province
                   </AccordionTrigger>

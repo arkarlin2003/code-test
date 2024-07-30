@@ -1,11 +1,11 @@
-import { CATEGORYS_URL, PRODUCTS_URL } from "@/constants";
+import { CATEGORIES_URL,CATEGORY_PRODUCTS_URL, PRODUCTS_URL } from "@/constants";
 import { api } from "./api";
 
 export const productApi = api.injectEndpoints({
     endpoints:(builder)=>({
         getCategories:builder.query({
             query:()=>({
-                url:CATEGORYS_URL
+                url:CATEGORIES_URL
             }),
             providesTags:['Product']
         }),
@@ -14,8 +14,20 @@ export const productApi = api.injectEndpoints({
                 url:PRODUCTS_URL
             }),
             providesTags:['Product']
+        }),
+        getProduct:builder.query({
+            query:(id)=>({
+                url:`${PRODUCTS_URL}/${id}`
+            }),
+            providesTags:['Product']
+        }),
+        getCategoryProducts:builder.query({
+            query:(slug)=>({
+                url:`${CATEGORY_PRODUCTS_URL}/${slug}`
+            }),
+            providesTags:['Product']
         })
     })
 })
 
-export const {useGetProductsQuery,useGetCategoriesQuery} = productApi
+export const {useGetProductsQuery,useGetCategoriesQuery,useGetProductQuery,useGetCategoryProductsQuery} = productApi

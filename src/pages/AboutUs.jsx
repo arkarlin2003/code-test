@@ -29,9 +29,10 @@ const AboutUs = () => {
             <Accordion
               type="single"
               collapsible
+              defaultValue="aboutus"
               className="w-full h-[54px] border px-[16px]"
             >
-              <AccordionItem value="item-1">
+              <AccordionItem value="aboutus">
                 <AccordionTrigger className=" text-sm font-poppin">
                   All Stories
                 </AccordionTrigger>

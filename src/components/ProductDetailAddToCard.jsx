@@ -36,7 +36,9 @@ const ProductDetailAddToCard = ({ product }) => {
     <div className="addtocard-section">
       <div className="space-y-[21px]">
         <div className="space-y-[8px]">
+          <Link to={`/categories?search=${product?.category}`}>
           <h5 className="category-title">{product?.category}</h5>
+          </Link>
           <h1 className="product-title">{product?.title}</h1>
         </div>
         <div className="flex justify-between">

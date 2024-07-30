@@ -3,7 +3,7 @@ import { Navigation } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/effect-coverflow";
-import { currencyFormat, titleToSlug, wordSlice } from "@/lib/utils";
+import { currencyFormat, wordSlice } from "@/lib/utils";
 import { MdOutlineSearch } from "react-icons/md";
 import { FaRegHeart } from "react-icons/fa6";
 import { IoIosArrowBack } from "react-icons/io";
@@ -24,6 +24,8 @@ const NewArrival = () => {
             modules={[Navigation]}
             spaceBetween={50}
             slidesPerView={4}
+            loop
+            autoplay
             navigation={{
               nextEl: ".btn-next",
               prevEl: ".btn-prev",
@@ -49,7 +51,7 @@ const NewArrival = () => {
                 </div>
                 <div className="mt-[16px]">
                   <h1 className="font-poppin font-semibold text-center">
-                    <Link to={`/products/${titleToSlug(product.title)}`}>
+                    <Link to={`/products/${product.id}`}>
                     {wordSlice(product.title)}
                     </Link>
                   </h1>

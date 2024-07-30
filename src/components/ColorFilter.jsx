@@ -20,8 +20,8 @@ const colors = [
 const ColorFilter = () => {
   return (
     <div className="space-y-[24px] ">
-      <Accordion type="single" collapsible className="w-full">
-        <AccordionItem value="item-1">
+      <Accordion type="single" collapsible defaultValue="color" className="w-full">
+        <AccordionItem value="color">
           <AccordionTrigger className="font-semibold font-poppin">
             Color
           </AccordionTrigger>

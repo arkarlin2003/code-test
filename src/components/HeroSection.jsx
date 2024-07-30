@@ -11,11 +11,11 @@ const HeroSection = () => {
           <h4 className="text-[53px] text-white absolute top-10 left-6 w-[246px] font-bold">50% <span className="text-[#ff3f90]">OFF</span></h4>
         </div>
         <div>
-          <Button className="  w-[176px] h-[46px] rounded space-x-3">
+          <Button className="shop-now">
            <span className="font-poppin text-base">
            Shop Now
            </span>
-            <IoArrowForwardOutline size={22}/>
+            <IoArrowForwardOutline className="icon"/>
           </Button>
         </div>
       </div>

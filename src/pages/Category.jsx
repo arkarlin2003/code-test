@@ -11,23 +11,46 @@ import {
   SelectContent,
   SelectGroup,
   SelectItem,
-  SelectLabel,
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import useGetProducts from "@/hooks/useGetProducts";
+import { useGetCategoryProductsQuery, useGetProductsQuery } from "@/services/api/productApi";
 import { useEffect, useState } from "react";
 import { RiLayoutGrid2Fill, RiLayoutGridFill } from "react-icons/ri";
-import {  useSearchParams } from "react-router-dom";
+import { useNavigate, useSearchParams } from "react-router-dom";
 
 const Category = () => {
   const [searchParams] = useSearchParams();
-  const [filterCategory,setFilterCategory] = useState()
-  useEffect(()=>{
-     setFilterCategory(searchParams.get("search"));
-   },[searchParams,filterCategory])
+  const [products, setProducts] = useState([]);
+  const nav = useNavigate()
+  const [filterCategory, setFilterCategory] = useState(searchParams.get("search"));
+  const {data:getproducts} = useGetProductsQuery()
+  const {data:filterProducts} = useGetCategoryProductsQuery(filterCategory);
+ 
+  const filterCategoryProducts =(category) => {
+    setFilterCategory(category)
+    if(category){
+      nav(`/categories?search=${category}`)
+    }else{
+      nav(`/categories`)
+    }
+  }
 
-  const products = useGetProducts();
+  const resetAllFilter = () => {
+    setFilterCategory("")
+    nav(`/categories`)
+  }
+
+  useEffect(() => {
+    if(filterCategory){
+      if(filterProducts){
+        setProducts(filterProducts)
+      }
+    }else{
+      setProducts(getproducts)
+    }
+  }, [products, filterCategory,filterProducts,getproducts]);
+
   const [layout, setLayout] = useState("grid-cols-3");
   const changeLayout = (value) => {
     setLayout(value);
@@ -45,11 +68,11 @@ const Category = () => {
           </h5>
         </div>
       </div>
-      <div className="px-[150px] mt-[69px] flex gap-[100px] justify-between">
+      <div className="category-hero-filter-section">
         <div className="w-[273px] space-y-[20px]">
-          <FilterSelected />
+          <FilterSelected filterCategory={filterCategory} filterCategoryProducts={filterCategoryProducts} resetAllFilter={resetAllFilter} />
           <DepartmentFilter />
-          <CategoryFilter />
+          <CategoryFilter filterCategory={filterCategory} filterCategoryProducts={filterCategoryProducts}/>
           <SizeFilter />
           <ColorFilter />
           <BrandFilter />
@@ -83,7 +106,7 @@ const Category = () => {
               </div>
               <div>
                 <Select>
-                  <SelectTrigger className="w-[175px]">
+                  <SelectTrigger className="w-[175px] focus:ring-0">
                     <SelectValue
                       className="text-sm placeholder:text-sm placeholder:font-poppin"
                       placeholder="Sort By: Featured"
@@ -91,19 +114,15 @@ const Category = () => {
                   </SelectTrigger>
                   <SelectContent>
                     <SelectGroup>
-                      <SelectLabel>Fruits</SelectLabel>
-                      <SelectItem value="apple">Apple</SelectItem>
-                      <SelectItem value="banana">Banana</SelectItem>
-                      <SelectItem value="blueberry">Blueberry</SelectItem>
-                      <SelectItem value="grapes">Grapes</SelectItem>
-                      <SelectItem value="pineapple">Pineapple</SelectItem>
+                      <SelectItem value="featured">Featured</SelectItem>
+                      <SelectItem value="newest">Newest</SelectItem>
                     </SelectGroup>
                   </SelectContent>
                 </Select>
               </div>
             </div>
           </div>
-          <div className={`grid ${layout} gap-7`}>
+          <div className={`grid ${layout} gap-[24px]`}>
             {products?.map((product) => (
               <ProductCard key={product.id} product={product} />
             ))}

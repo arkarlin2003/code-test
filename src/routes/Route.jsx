@@ -19,7 +19,7 @@ const Router = createBrowserRouter(
     <Route>
       <Route path="/" element={<App />}>
         <Route index element={<Home />} />
-        <Route path="/products/:slug" element={<ProductDetail />} />
+        <Route path="/products/:id" element={<ProductDetail />} />
         <Route path="/categories" element={<Category />} />
         <Route
           path="/add-to-carts"

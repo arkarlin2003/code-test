@@ -9,9 +9,9 @@ const Collection = () => {
           New <span className=" text-default">2023</span>
         </h1>
         <h1>Clothes Collection</h1>
-        <Button className="  w-[176px] h-[46px] rounded space-x-3">
+        <Button className="shop-now">
           <span className="font-poppin text-base">Shop Now</span>
-          <IoArrowForwardOutline size={22} />
+          <IoArrowForwardOutline className="icon" />
         </Button>
       </div>
     </section>

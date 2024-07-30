@@ -4,7 +4,6 @@ import PaymentCard from "./PaymentCard";
 import Step from "./shared/Step";
 import Stepper from "./shared/Stepper";
 import ShippingMethod from "./ShippingMethod";
-import { useState } from "react";
 
 const ShippingStep = () => {
   const carts = useSelector((state) => state.carts);

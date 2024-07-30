@@ -21,6 +21,7 @@ import { useState } from "react";
 import { useFormik } from "formik";
 import { Link, useNavigate } from "react-router-dom";
 import { clearCart, setPaymentMethod } from "@/services/features/cartSlice";
+import { Label } from "./ui/label";
 
 const months = ["January", "February", "March"];
 const years = ["2024", "2023", "2022", "2021", "2020"];
@@ -28,7 +29,7 @@ const years = ["2024", "2023", "2022", "2021", "2020"];
 const PaymentCard = () => {
   const dispatch = useDispatch();
   const [method, setMethod] = useState("credit-card");
-  const nav = useNavigate()
+  const nav = useNavigate();
   const formik = useFormik({
     initialValues: {
       paymentMethod: {
@@ -41,9 +42,11 @@ const PaymentCard = () => {
       },
     },
     onSubmit: async (values) => {
-      dispatch(setPaymentMethod(values))
-      dispatch(clearCart())
-      nav('/purchase-complete')
+      dispatch(setPaymentMethod(values));
+      if (values.paymentMethod.type) {
+        dispatch(clearCart());
+        nav("/purchase-complete");
+      }
     },
   });
   return (
@@ -55,15 +58,21 @@ const PaymentCard = () => {
         <div className="mt-[24px] space-y-[32px]">
           <RadioGroup defaultValue={method}>
             <div>
-              <Accordion type="single" collapsible defaultValue="credit-card" className="w-full">
+              <Accordion
+                type="single"
+                collapsible
+                defaultValue="credit-card"
+                className="w-full"
+              >
                 <AccordionItem value="credit-card" className="border-b-0">
                   <AccordionTrigger hide={true}>
                     <div className="flex justify-between py-[16px] px-[24px] border w-full">
                       <div className="space-x-[16px] flex items-center">
                         <RadioGroupItem
-                          onChange={() =>
-                            (formik.values.paymentMethod.type = "credit-card")
-                          }
+                          onClick={() => {
+                            setMethod("credit-card");
+                            formik.values.paymentMethod.type = "credit-card";
+                          }}
                           value="credit-card"
                           id="credit-card"
                         />
@@ -106,8 +115,7 @@ const PaymentCard = () => {
                         />
                       </div>
                       <div className="flex justify-between h-[41px]">
-                        <Select
-                        >
+                        <Select>
                           <SelectTrigger className="w-[131px] text-sm h-full py-[10px] px-[21px]">
                             <SelectValue
                               className="text-sm placeholder:text-sm"
@@ -174,9 +182,10 @@ const PaymentCard = () => {
                     <div className="flex justify-between py-[16px] px-[24px] border w-full">
                       <div className="space-x-[16px] flex items-center">
                         <RadioGroupItem
-                          onChange={() =>
-                            (formik.values.paymentMethod.type = "paypal")
-                          }
+                          onClick={() => {
+                            setMethod("paypal");
+                            formik.values.paymentMethod.type = "paypal";
+                          }}
                           value="paypal"
                           id="paypal"
                         />

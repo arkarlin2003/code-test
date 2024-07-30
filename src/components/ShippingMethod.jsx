@@ -35,14 +35,14 @@ const shippingMethods = [
 ];
 
 const ShippingMethod = () => {
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
   const [method, setMethod] = useState("Standard Shipping");
   const formik = useFormik({
     initialValues: {
       shippingMethod: method,
     },
     onSubmit: async (values) => {
-      dispatch(setShippingMethod(values))
+      dispatch(setShippingMethod(values));
     },
   });
 
@@ -63,9 +63,10 @@ const ShippingMethod = () => {
                   <RadioGroupItem
                     value={method.title}
                     name="shippingMethod"
-                    onClick={() =>
-                      (formik.values.shippingMethod = method.title)
-                    }
+                    onClick={() => {
+                      setMethod(method.title);
+                      formik.values.shippingMethod = method.title;
+                    }}
                   />
                   <div className="space-y-[8px]">
                     <p className="text-xs font-poppin">{method.title}</p>

@@ -78,7 +78,7 @@
   }
 
   .header {
-    @apply w-full h-[76px] py-[25px] px-[150px] flex items-center z-50  sticky top-0  justify-between;
+    @apply w-full h-[76px] py-[25px] px-[150px] flex items-center z-[70]  sticky top-0  justify-between;
   }
 
   .header .icon {
